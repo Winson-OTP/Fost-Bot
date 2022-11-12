@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const city = interaction.options.getString('city')
-        await request({
+        request({
             url: `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-F9A2BA51-83F4-41B7-8732-1BB6C80A424B&format=JSON&locationName=${encodeURI(city)}` ,
             headers: {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
@@ -34,7 +34,7 @@ module.exports = {
                 wts[i] = wts[i] + '<:temperatures:1038742691342717008> 最高溫度 ' + wtdata[4].time[i].parameter.parameterName + '℃\n' //最高溫度
                 wts[i] = wts[i] + '<:softs:1038743604744687616> 舒適度 ' + wtdata[3].time[i].parameter.parameterName + '\n' //舒適度
             }
-            await searchEmbed.addFields(
+            searchEmbed.addFields(
                 { name: '地區名稱', value: `${data.records.location[0].locationName}` },
                 { name: `${wtdata[0].time[0].startTime}`, value: `${wts[0]}`, inline: true },
                 { name: `${wtdata[0].time[1].startTime}`, value: `${wts[1]}`, inline: true },

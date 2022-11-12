@@ -20,7 +20,7 @@ module.exports = {
             option.setName('var')
             .setDescription('要執行的指令所附帶的參數')),
     async execute(interaction) {
-        if (interaction.user.id != '871616467186098187') return interaction.reply({ content: '💥｜此指令僅限機器人開發者使用', ephemeral: true })
+        if (interaction.user.id !== '871616467186098187') return interaction.reply({ content: '💥｜此指令僅限機器人開發者使用', ephemeral: true })
         let cmd = interaction.options.getString('cmd');
         require(`./dev/${cmd}.js`).execute(interaction);
     }

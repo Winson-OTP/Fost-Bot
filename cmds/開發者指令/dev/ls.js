@@ -5,10 +5,7 @@ const {
 module.exports = {
     name: 'ls',
     async execute(interaction) {
-        let servers = [];
-        await interaction.client.guilds.cache.forEach(g => {
-            servers.push(`\`${g.name}\` \`伺服器ID ${g.id}\`  \`人數 ${g.memberCount}\``)
-        })
+        const servers = interaction.client.guilds.cache.map(g => `\`${g.name}\` \`伺服器ID ${g.id}\`  \`人數 ${g.memberCount}\``)
         await interaction.reply({
             embeds: [new EmbedBuilder()
                 .setColor('#696969')

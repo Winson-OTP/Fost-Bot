@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const searchText = interaction.options.getString('text');
-        await request({
+        request({
             url: `https://api.stackexchange.com/2.3/search?page=1&pagesize=5&order=desc&sort=activity&intitle=${encodeURI(searchText)}&site=stackoverflow`,
 		   gzip: true,
             headers: {
@@ -45,7 +45,7 @@ module.exports = {
                 ownerLinks.push(d.owner.link)
                 createTimes.push(d.creation_date)
             })
-            if (titles.length == 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' });
+            if (titles.length === 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' });
             for (let i=0; i<titles.length-1; i++) {
                 searchEmbed.addFields({ name: titles[i], value: `使用者：[${ownerNames[i]}](${ownerLinks[i]}) 貼文時間：<t:${createTimes[i]}:F> \n前往文章：${links[i]}` })
             }

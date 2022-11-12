@@ -24,15 +24,12 @@ module.exports = {
         let msg = interaction.options.getString('content');
         let reply = interaction.options.getString('msg-id') || false;
         await interaction.deferReply({ ephemeral: true });
-        block.forEach(a => {
-            if (msg.includes(a)) msg = '<@BLOCK!!>'
-        })
-        if (msg == '<@BLOCK!!>') return interaction.editReply({
+        if (block.some(a => msg.includes(a))) return interaction.editReply({
             content: `您的訊息包含敏感內容而無法發送，您無法通過機器人發送包含有以下字彙的訊息 ${block.join(', ')}`,
             ephemeral: true
         });
         let msgs;
-        if (reply==false) {
+        if (!reply) {
             client.connect(err => {
                 const collection = client.db("Say").collection("say");
                 interaction.channel.send({ content: `${msg}`, fetchReply: true })

@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const searchText = interaction.options.getString('text');
-        await request({
+        request({
             url: `https://ithelp.ithome.com.tw/search?search=${encodeURI(searchText)}&tab=user` ,
             headers: {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
@@ -33,7 +33,7 @@ module.exports = {
             $('.member-list__data').each(function(i, elem) {
                 infos.push($(this).text())
             })
-            if (titles.length == 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
+            if (titles.length === 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
             for (let i=0; i<(titles.length<4? titles.length:4); i++) {
                 let info = '';
                 for (let z=i*6; z<i*6+6; z++) {

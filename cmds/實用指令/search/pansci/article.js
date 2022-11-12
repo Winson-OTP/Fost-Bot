@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const searchText = interaction.options.getString('text');
-        await request({
+        request({
             url: `https://pansci.asia/?post_type%5B%5D=post&post_type%5B%5D=post_review&post_type%5B%5D=pan_booklist&s=${encodeURI(searchText)}` ,
             headers: {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
@@ -34,7 +34,7 @@ module.exports = {
             $('.archive-post-eptext').each(function(i, elem) {
                 descriptions.push($(this).text().replace(/\n/g, ''))
             })
-            if (titles.length == 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
+            if (titles.length === 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
             for (let i=0; i<(titles.length<4? titles.length:4); i++) {
                 searchEmbed.addFields({ name: `<:articles:1038336921253978162> ${titles[i]}`, value: `> ${descriptions[i].slice(0, descriptions[i].length > 120? 120:descriptions[i].length)}...... [閱讀更多](${links[i]})` })
             }
