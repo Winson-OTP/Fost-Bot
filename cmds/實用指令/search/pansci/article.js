@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const searchText = interaction.options.getString('text');
-        await request({
+        request({
             url: `https://pansci.asia/?post_type%5B%5D=post&post_type%5B%5D=post_review&post_type%5B%5D=pan_booklist&s=${encodeURI(searchText)}` ,
             headers: {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'

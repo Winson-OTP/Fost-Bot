@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const index = interaction.options.getInteger('index') || 0;
-        await request({
+        request({
             url: `https://opendata.cwb.gov.tw/api/v1/rest/datastore/E-A0015-001?Authorization=CWB-F9A2BA51-83F4-41B7-8732-1BB6C80A424B&limit=1&offset=${index}&format=JSON` ,
             headers: {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
@@ -26,8 +26,8 @@ module.exports = {
             const data = JSON.parse(body)
             const eqdata = data.records.earthquake[0]
             let citys = '';
-            await eqdata.intensity.shakingArea.forEach(d => citys = `${citys}${d.areaName} ${d.areaIntensity.value}${d.areaIntensity.unit}　`)
-            await searchEmbed.addFields(
+            eqdata.intensity.shakingArea.forEach(d => citys = `${citys}${d.areaName} ${d.areaIntensity.value}${d.areaIntensity.unit}　`)
+            searchEmbed.addFields(
                 { name: '地震連結', value: `[點我前往](${eqdata.web})`, inline: true },
                 { name: '地震編號', value: `${eqdata.earthquakeNo}`, inline: true },
                 { name: '地震時間', value: `${eqdata.earthquakeInfo.originTime}`, inline: true },

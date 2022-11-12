@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const searchText = interaction.options.getString('text');
-        await request({
+        request({
             url: `https://ithelp.ithome.com.tw/search?search=${encodeURI(searchText)}&tab=question` ,
             headers: {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'

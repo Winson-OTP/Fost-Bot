@@ -73,8 +73,8 @@ process
     .on("uncaughtException", onError);
 
 async function onError(error, origin) {
-    await console.log(chalk.red('錯誤產生｜新的錯誤產生了，以下為錯誤訊息'))
-    await console.error(error);
+    console.log(chalk.red('錯誤產生｜新的錯誤產生了，以下為錯誤訊息'))
+    console.error(error);
     await (await client.channels.fetch('1033219551661396008')).send({
         content: `<@871616467186098187>`,
         embeds: [

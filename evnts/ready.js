@@ -20,6 +20,6 @@ module.exports = {
         await (await client.channels.fetch('1039162963807981668')).send(` \`\`\`js
 機器人 ${client.user.tag} 成功上線
 \`\`\``);
-        await console.log(chalk.green(`機器人 ${client.user.tag} 成功上線`));
+        console.log(chalk.green(`機器人 ${client.user.tag} 成功上線`));
     }
 };

@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
         const searchText = interaction.options.getString('text');
-        await request({
+        request({
             url: `https://api.stackexchange.com/2.3/search?page=1&pagesize=5&order=desc&sort=activity&intitle=${encodeURI(searchText)}&site=stackoverflow`,
 		   gzip: true,
             headers: {
