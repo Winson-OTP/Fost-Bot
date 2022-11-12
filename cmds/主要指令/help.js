@@ -49,7 +49,7 @@ module.exports = {
             let subcmd = [];
             if (cmd.data.options.length > 0) {
                 for (option of cmd.data.options) {
-                    if (option.type != undefined) {
+                    if (option.type) {
                         settings.push(`\`${option.name}\` ${option.description} ${option.required ? '(必填)' : ''}`)
                     } else {
                         subcmd.push(`\`${option.name}\` ${option.description}`)

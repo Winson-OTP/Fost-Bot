@@ -25,7 +25,7 @@ module.exports = {
                 return
             }
             let data = channel;
-            if (eval != data.record.last.number+1) {
+            if (eval !== data.record.last.number+1) {
                 let trueNum = data.record.last.number
                 data.record.last.userid = '';
                 data.record.last.number = 0;
