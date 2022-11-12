@@ -49,8 +49,7 @@ module.exports = {
     name: 'role',
     async execute(interaction) {
         const role = interaction.options.getRole('role')
-        let permission = [];
-        role.permissions.toArray().forEach(s => permission.push(`\`${r[s]}\``))
+        const permission = role.permissions.toArray().map(`\`${r[s]}\``)
         let roleEmbed = new EmbedBuilder()
             .setAuthor({
                 iconURL: interaction.user.displayAvatarURL(),
