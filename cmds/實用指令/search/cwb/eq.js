@@ -25,8 +25,7 @@ module.exports = {
                 .setColor('#87ceeb')
             const data = JSON.parse(body)
             const eqdata = data.records.earthquake[0]
-            let citys = '';
-            eqdata.intensity.shakingArea.forEach(d => citys = `${citys}${d.areaName} ${d.areaIntensity.value}${d.areaIntensity.unit}　`)
+            const citys = eqdata.intensity.shakingArea.reduce((last, curr) => `${last}${curr.areaName} ${curr.areaIntensity.value}${curr.areaIntensity.unit} `)
             searchEmbed.addFields(
                 { name: '地震連結', value: `[點我前往](${eqdata.web})`, inline: true },
                 { name: '地震編號', value: `${eqdata.earthquakeNo}`, inline: true },
