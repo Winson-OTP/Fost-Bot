@@ -35,7 +35,7 @@ module.exports = {
         if (interaction.isButton()) {
             const { customId } = interaction
             const cmd = interaction.client.buttons.get(customId.split('-')[0]) || undefined;
-            if (cmd == undefined) return
+            if (!cmd) return
             cmd.execute(interaction, customId.split('-'))
         }
     }

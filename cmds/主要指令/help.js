@@ -20,7 +20,7 @@ module.exports = {
         if (command) {
             let category = interaction.client.commands.get(command).category
             const cmd = interaction.client.commands.get(command);
-            if (cmd == undefined) return interaction.editReply({
+            if (!cmd) return interaction.editReply({
                 content: '📕｜沒有搜尋到您所查詢的指令，請確認本機器人包含該指令，如指令中含有空格請僅輸入空格前的指令名稱',
                 ephemeral: true
             });
