@@ -23,10 +23,11 @@ module.exports = {
     async execute(interaction) {
         let msg = interaction.options.getString('content');
         let reply = interaction.options.getString('msg-id') || false;
+        await interaction.deferReply({ ephemeral: true });
         block.forEach(a => {
             if (msg.includes(a)) msg = '<@BLOCK!!>'
         })
-        if (msg == '<@BLOCK!!>') return interaction.reply({
+        if (msg == '<@BLOCK!!>') return interaction.editReply({
             content: `您的訊息包含敏感內容而無法發送，您無法通過機器人發送包含有以下字彙的訊息 ${block.join(', ')}`,
             ephemeral: true
         });
@@ -35,18 +36,27 @@ module.exports = {
             client.connect(err => {
                 const collection = client.db("Say").collection("say");
                 interaction.channel.send({ content: `${msg}`, fetchReply: true })
-                    .then((message) => collection.insertOne({ msgid: message.id, msguser: interaction.user.id }))
+                    .then((message) => {
+                        collection.insertOne({ msgid: message.id, msguser: interaction.user.id })
+                        interaction.editReply({
+                            content: '您的訊息已成功發送',
+                            ephemeral: true
+                        });
+                    })
         	});
         } else {
             client.connect(err => {
                 const collection = client.db("Say").collection("say");
                 interaction.channel.messages.fetch(reply).then(rmsg => rmsg.reply({ content: `${msg}`, fetchReply: true }))
-                    .then((message) => collection.insertOne({ msgid: message.id, msguser: interaction.user.id }))
+                    .then((message) => {
+                    	collection.insertOne({ msgid: message.id, msguser: interaction.user.id })
+                        interaction.editReply({
+                            content: '您的訊息已成功發送並回覆指定訊息',
+                            ephemeral: true
+                        });
+                })
         	});
         }
-        await interaction.reply({
-            content: '您的訊息已成功發送',
-            ephemeral: true
-        });
+        
     }
 }
