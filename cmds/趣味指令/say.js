@@ -29,7 +29,7 @@ module.exports = {
             ephemeral: true
         });
         let msgs;
-        if (reply==false) {
+        if (!reply) {
             client.connect(err => {
                 const collection = client.db("Say").collection("say");
                 interaction.channel.send({ content: `${msg}`, fetchReply: true })

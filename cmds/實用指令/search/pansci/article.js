@@ -34,7 +34,7 @@ module.exports = {
             $('.archive-post-eptext').each(function(i, elem) {
                 descriptions.push($(this).text().replace(/\n/g, ''))
             })
-            if (titles.length == 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
+            if (titles.length === 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
             for (let i=0; i<(titles.length<4? titles.length:4); i++) {
                 searchEmbed.addFields({ name: `<:articles:1038336921253978162> ${titles[i]}`, value: `> ${descriptions[i].slice(0, descriptions[i].length > 120? 120:descriptions[i].length)}...... [閱讀更多](${links[i]})` })
             }

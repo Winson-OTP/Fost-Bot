@@ -45,7 +45,7 @@ module.exports = {
                 ownerLinks.push(d.owner.link)
                 createTimes.push(d.creation_date)
             })
-            if (titles.length == 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' });
+            if (titles.length === 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' });
             for (let i=0; i<titles.length-1; i++) {
                 searchEmbed.addFields({ name: titles[i], value: `使用者：[${ownerNames[i]}](${ownerLinks[i]}) 貼文時間：<t:${createTimes[i]}:F> \n前往文章：${links[i]}` })
             }

@@ -33,7 +33,7 @@ module.exports = {
             $('.member-list__data').each(function(i, elem) {
                 infos.push($(this).text())
             })
-            if (titles.length == 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
+            if (titles.length === 0) return interaction.editReply({ content: '✖｜搜尋不到與關鍵字相符的結果，請擴大搜索範圍並再試' })
             for (let i=0; i<(titles.length<4? titles.length:4); i++) {
                 let info = '';
                 for (let z=i*6; z<i*6+6; z++) {
