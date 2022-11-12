@@ -16,4 +16,4 @@
 您可以通過[這個連結](https://discord.com/api/oauth2/authorize?client_id=1031906245839437925&permissions=8&scope=bot%20applications.commands)邀請我到您的伺服器！
 
 ## 💬 要怎麼取得支援？
-目前機器人的開發者支援伺服器尚未完全架構完畢，因此尚未開放加入，但是您依然可以使用機器人的 `/feedback` 指令向開發者進行回饋唷！
+您可以使用機器人的 `/feedback` 指令向開發者進行回饋唷！如想快速得到開發者的支援，或是與開發者進行互動，可以到[支援伺服器](https://discord.gg/ApJWEmnTB3)取得支援哦！
