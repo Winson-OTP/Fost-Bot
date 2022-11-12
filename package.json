@@ -1,0 +1,21 @@
+{
+  "name": "Fost Bot",
+  "version": "1.0.0",
+  "description": "",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "bot": "node ."
+  },
+  "author": "WinsonOTP",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
+    "discord.js": "^14.4.0",
+    "mongodb": "^4.11.0",
+    "request": "^2.88.2",
+    "qrcode": "^1.5.1",
+    "mathjs": "^11.3.3"
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "botClientID": "機器人的使用者ID",
+    "botToken": "機器人的Token",
+    "mongoDBLink": "MongoDB資料庫的連線網址",
+    "mongoDBUsername": "MongoDB資料庫的使用者名稱",
+    "mongoDBPassword": "MongoDB資料庫的使用者密碼"
+}
