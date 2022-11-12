@@ -1,7 +1,7 @@
 {
-    "botClientID": "�����H���ϥΪ�ID",
-    "botToken": "�����H��Token",
-    "mongoDBLink": "MongoDB��Ʈw���s�u���}",
-    "mongoDBUsername": "MongoDB��Ʈw���ϥΪ̦W��",
-    "mongoDBPassword": "MongoDB��Ʈw���ϥΪ̱K�X"
+    "botClientID": "機器人的使用者ID",
+    "botToken": "機器人的Token",
+    "mongoDBLink": "MongoDB的資料庫連線網址",
+    "mongoDBUsername": "MongoDB的連線使用者名稱",
+    "mongoDBPassword": "MongoDB的連線使用者密碼"
 }

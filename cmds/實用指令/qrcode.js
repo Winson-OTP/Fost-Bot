@@ -10,7 +10,7 @@ module.exports = {
         .setName('qrcode')
         .setDescription('產生連結指定內容或網址的QRCode')
         .setDMPermission(false)
-    	.addStringOption(option => option.setName('content').setDescription('要連結的內容或網址').setRequired(true)),
+    	.addStringOption(option => option.setName('content').setDescription('要連結的內容或網址').setRequired(true).setMaxLength(1000)),
     async execute(interaction) {
         const content = interaction.options.getString('content');
         QRCode.toDataURL(content).then(url =>{
@@ -24,14 +24,9 @@ module.exports = {
 };
 
 function dataURItoBlob(dataURI) {
-  // convert base64 to raw binary data held in a string
-  var data = dataURI.split(',')[1]; 
-  var byteString = Buffer.from(data, "base64");
-
-  // separate out the mime component
-  var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-
-  // write the ArrayBuffer to a blob, and you're done
-  var blob = new Blob([byteString], { type: mimeString  });
-  return blob;
+    var data = dataURI.split(',')[1]; 
+    var byteString = Buffer.from(data, "base64");
+    var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+    var blob = new Blob([byteString], { type: mimeString  });
+    return blob;
 }
